@@ -13,7 +13,6 @@
 #include "core/wifi/wifi_common.h"
 #include "esp_system.h"
 #include "esp_wifi.h"
-#include "karma_attack.h"
 #include "sniffer.h"
 #include "vector"
 #include <Arduino.h>
@@ -281,9 +280,6 @@ void wifi_atk_menu() {
     bool scanAtks = false;
     options = {
         {"Target Atks",  [&]() { scanAtks = true; }    },
-#ifndef LITE_VERSION
-        {"Karma Attack", [=]() { karma_setup(); }      },
-#endif
         {"Beacon SPAM",  [=]() { beaconAttack(); }     },
         {"Deauth Flood", [=]() { deauthFloodAttack(); }},
     };

@@ -1647,7 +1647,7 @@ void updateSSIDFrequency(const String &ssid) {
         });
     }
 }
-
+/*
 void checkCloneAttackOpportunities() {
     if (!attackConfig.enableCloneMode || popularSSIDs.empty()) return;
     if (millis() - lastFrequencyReset > SSID_FREQUENCY_RESET) {
@@ -2114,7 +2114,7 @@ void launchManualEvilPortal(const String &ssid, uint8_t channel, bool verifyPwd)
     Serial.printf("[MANUAL] Launching background portal for %s (ch%d)\n", ssid.c_str(), channel);
     launchBackgroundPortal(ssid, channel, selectedTemplate.name);
 }
-
+*/
 void handleBroadcastResponse(const String &ssid, const String &mac) {
     if (broadcastAttack.isActive() && !karmaPaused) {
         broadcastAttack.processProbeResponse(ssid, mac);

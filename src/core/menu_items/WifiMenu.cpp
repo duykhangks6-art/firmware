@@ -9,7 +9,6 @@
 #include "modules/ethernet/ARPScanner.h"
 #include "modules/wifi/ap_info.h"
 #include "modules/wifi/clients.h"
-#include "modules/wifi/karma_attack.h"
 #include "modules/wifi/netcut.h"
 #include "modules/wifi/responder.h"
 #include "modules/wifi/scan_hosts.h"

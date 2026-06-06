@@ -261,7 +261,7 @@ void boot_screen_anim() {
 
     tft.drawPixel(0, 0, 0);       // Forces back communication with TFT, to avoid ghosting
                                   // Start image loop
-    while (millis() < i + 7000) { // boot image lasts for 5 secs
+    while (millis() < i + 1000) { // boot image lasts for 5 secs
         if ((millis() - i > 2000) && !drawn) {
             tft.fillRect(0, 45, tftWidth, tftHeight - 45, bruceConfig.bgColor);
             if (boot_img > 0 && !drawn) {
@@ -485,8 +485,9 @@ void setup() {
 #if defined(HAS_SCREEN)
     bruceConfig.openThemeFile(bruceConfig.themeFS(), bruceConfig.themePath, false);
     if (!bruceConfig.instantBoot) {
-        boot_screen_anim();
-        startup_sound();
+        boot_screen();
+        delay(200);
+        tft.fillScreen(bruceConfig.bgColor);
     }
     if (bruceConfig.wifiAtStartup) {
         log_i("Loading Wifi at Startup");

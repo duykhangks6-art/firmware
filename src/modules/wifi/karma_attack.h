@@ -1,7 +1,6 @@
 #ifndef KARMA_ATTACK_H
 #define KARMA_ATTACK_H
 #ifndef LITE_VERSION
-#include "evil_portal.h"
 #include <Arduino.h>
 #include <FS.h>
 #include <map>

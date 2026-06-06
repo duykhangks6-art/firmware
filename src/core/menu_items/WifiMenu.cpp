@@ -17,7 +17,6 @@
 #include "modules/wifi/wifi_atks.h"
 
 #ifndef LITE_VERSION
-#include "modules/pwnagotchi/pwnagotchi.h"
 #include "modules/wifi/wifi_recover.h"
 #endif
 

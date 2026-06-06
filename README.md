@@ -63,7 +63,6 @@ Also, [read our FAQ](https://wiki.bruce.computer/faq/)
 - [x] [Arp Spoofing](https://wiki.bruce.computer/features/wifi/#arp-spoofing)
 - [x] [Arp Poisoning](https://wiki.bruce.computer/features/wifi/#arp-poisoning)
 - [x] [Wireguard Tunneling](https://wiki.bruce.computer/features/wifi/#wireguard-tunneling)
-- [x] Brucegotchi
   - [x] Pwnagotchi friend
   - [x] Pwngrid spam faces & names
     - [x] [Optional] DoScreen a very long name and face
@@ -236,7 +235,7 @@ Also, [read our FAQ](https://wiki.bruce.computer/faq/)
 ² CYD have a LITE_VERSION version for Launcher Compatibility
 ¹ Core, CYD and StickCs Bad-USB: [here](https://wiki.bruce.computer/features/others/#badusb)
 
-_LITE_VERSION_: TelNet, SSH, WireGuard, ScanHosts, RawSniffer, Brucegotchi, BLEBacon, BLEScan and Interpreter are NOT available for M5Launcher Compatibility
+_LITE_VERSION_: TelNet, SSH, WireGuard, ScanHosts, RawSniffer, BLEBacon, BLEScan and Interpreter are NOT available for M5Launcher Compatibility
 
 ## :sparkles: Why and how does it look?
 

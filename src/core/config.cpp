@@ -622,15 +622,6 @@ String BruceConfig::getWifiPassword(const String &ssid) const {
     return "";
 }
 
-void BruceConfig::addEvilWifiName(String value) {
-    evilWifiNames.insert(value);
-    saveFile();
-}
-
-void BruceConfig::removeEvilWifiName(String value) {
-    evilWifiNames.erase(value);
-    saveFile();
-}
 
 //evill
 

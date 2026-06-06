@@ -97,49 +97,6 @@ void WifiMenu::optionsMenu() {
     options.clear();
 }
 
-void WifiMenu::configMenu() {
-    std::vector<Option> wifiOptions;
-
-    wifiOptions.push_back({"Change MAC", wifiMACMenu});
-    wifiOptions.push_back({"Add Evil Wifi", addEvilWifiMenu});
-    wifiOptions.push_back({"Remove Evil Wifi", removeEvilWifiMenu});
-    wifiOptions.push_back({bruceConfig.TerminalLog ? "SSH/Telnet Log OFF" : "SSH/Telnet Log ON", [this]() {
-                               bruceConfig.setTerminalLog(!bruceConfig.TerminalLog);
-                               configMenu();
-                           }});
-
-    // Evil Wifi Settings submenu (unchanged)
-    wifiOptions.push_back({"Evil Wifi Settings", [this]() {
-                               std::vector<Option> evilOptions;
-
-                               evilOptions.push_back({"Set Gateway IP", setEvilGatewayIp});
-                               evilOptions.push_back({"Password Mode", setEvilPasswordMode});
-                               evilOptions.push_back({"Rename /creds", setEvilEndpointCreds});
-                               evilOptions.push_back({"Allow /creds access", setEvilAllowGetCreds});
-                               evilOptions.push_back({"Rename /ssid", setEvilEndpointSsid});
-                               evilOptions.push_back({"Allow /ssid access", setEvilAllowSetSsid});
-                               evilOptions.push_back({"Display endpoints", setEvilAllowEndpointDisplay});
-                               evilOptions.push_back({"Back", [this]() { configMenu(); }});
-                               loopOptions(evilOptions, MENU_TYPE_SUBMENU, "Evil Wifi Settings");
-                           }});
-
-    {
-
-        String hidden__wifi_option = String("Hidden Networks:") + (showHiddenNetworks ? "ON" : "OFF");
-
-        // construct Option explicitly using char* label
-        Option opt(hidden__wifi_option.c_str(), [this]() {
-            showHiddenNetworks = !showHiddenNetworks;
-            displayInfo(String("Hidden Networks:") + (showHiddenNetworks ? "ON" : "OFF"), true);
-            configMenu();
-        });
-
-        wifiOptions.push_back(opt);
-    }
-    wifiOptions.push_back({"Back", [this]() { optionsMenu(); }});
-    loopOptions(wifiOptions, MENU_TYPE_SUBMENU, "WiFi Config");
-}
-
 void WifiMenu::drawIcon(float scale) {
     clearIconArea();
     int deltaY = scale * 20;

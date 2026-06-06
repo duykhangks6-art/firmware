@@ -483,31 +483,6 @@ void setWifiStartupConfig() {
 }
 
 /*********************************************************************
-**  Function: addEvilWifiMenu
-**  Handles Menu to add evil wifi names into config list
-**********************************************************************/
-void addEvilWifiMenu() {
-    String apName = keyboard("", 30, "Evil Portal SSID");
-    if (apName != "\x1B") bruceConfig.addEvilWifiName(apName);
-}
-
-/*********************************************************************
-**  Function: removeEvilWifiMenu
-**  Handles Menu to remove evil wifi names from config list
-**********************************************************************/
-void removeEvilWifiMenu() {
-    options = {};
-
-    for (const auto &wifi_name : bruceConfig.evilWifiNames) {
-        options.push_back({wifi_name.c_str(), [wifi_name]() { bruceConfig.removeEvilWifiName(wifi_name); }});
-    }
-
-    options.push_back({"Cancel", [=]() { backToMenu(); }});
-
-    loopOptions(options);
-}
-
-/*********************************************************************
 **  Function: setRFModuleMenu
 **  Handles Menu to set the RF module in use
 **********************************************************************/

@@ -14,7 +14,6 @@
 #include "freertos/queue.h"
 #include "freertos/ringbuf.h"
 #include "lwip/err.h"
-#include "modules/wifi/evil_portal.h"
 #include "modules/wifi/sniffer.h"
 #include <Arduino.h>
 #include <TimeLib.h>

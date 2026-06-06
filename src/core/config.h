@@ -67,10 +67,7 @@ public:
     String wifiMAC = ""; //@IncursioHack
     bool TerminalLog = true;
 
-    // EvilPortal
-    EvilPortalEndpoints evilPortalEndpoints = {"/creds", "/ssid", true, true, true};
-    EvilPortalPasswordMode evilPortalPasswordMode = FULL_PASSWORD;
-    String evilPortalGatewayIp = "172.0.0.1";
+
 
     void setWifiMAC(const String &mac) {
         wifiMAC = mac;

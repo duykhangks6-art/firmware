@@ -150,7 +150,6 @@ typedef struct {
 
 // Single active portal instance
 struct BackgroundPortal {
-    EvilPortal *instance;             // Portal instance
     String portalId;                  // Unique ID for file naming
     String ssid;                      // SSID being spoofed
     uint8_t channel;                   // Channel this portal runs on

@@ -9,29 +9,6 @@
 #include <set>
 #include <vector>
 
-enum EvilPortalPasswordMode { FULL_PASSWORD = 0, FIRST_LAST_CHAR = 1, HIDE_PASSWORD = 2, SAVE_LENGTH = 3 };
-
-class BruceConfig : public BruceTheme {
-public:
-    struct WiFiCredential {
-        String ssid;
-        String pwd;
-    };
-    struct Credential {
-        String user;
-        String pwd;
-    };
-    struct QrCodeEntry {
-        String menuName;
-        String content;
-    };
-    struct EvilPortalEndpoints {
-        String getCredsEndpoint;
-        String setSsidEndpoint;
-        bool showEndpoints;
-        bool allowSetSsid;
-        bool allowGetCreds;
-    };
 
     const char *filepath = "/bruce.conf";
 
@@ -155,19 +132,6 @@ public:
     void addQrCodeEntry(const String &menuName, const String &content);
     void removeQrCodeEntry(const String &menuName);
     String getWifiPassword(const String &ssid) const;
-    void addEvilWifiName(String value);
-    void removeEvilWifiName(String value);
-    void setEvilEndpointCreds(String value);
-    void setEvilEndpointSsid(String value);
-    void setEvilAllowEndpointDisplay(bool value);
-    void setEvilAllowGetCreds(bool value);
-    void setEvilAllowSetSsid(bool value);
-    void setEvilPasswordMode(EvilPortalPasswordMode value);
-    void setEvilGatewayIp(String value);
-    void validateEvilEndpointCreds();
-    void validateEvilEndpointSsid();
-    void validateEvilPasswordMode();
-    void validateEvilGatewayIp();
 
     // RFID
     void addMifareKey(String value);

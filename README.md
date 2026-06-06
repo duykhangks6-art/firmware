@@ -49,7 +49,6 @@ Also, [read our FAQ](https://wiki.bruce.computer/faq/)
   - [x] [Target Atk](https://wiki.bruce.computer/features/wifi/#target-atks)
     - [x] Information
     - [x] Target Deauth
-    - [x] EvilPortal + Deauth
   - [x] Deauth Flood (More than one target)
 - [x] [Wardriving](https://wiki.bruce.computer/features/gps/#wardriving)
 - [x] [TelNet](https://wiki.bruce.computer/features/wifi/#telnet)

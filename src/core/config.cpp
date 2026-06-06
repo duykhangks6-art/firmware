@@ -441,10 +441,6 @@ void BruceConfig::validateConfig() {
     validateColorInverted();
     validateBadUSBBLEKeyboardLayout();
     validateBadUSBBLEKeyDelay();
-    validateEvilEndpointCreds();
-    validateEvilEndpointSsid();
-    validateEvilPasswordMode();
-    validateEvilGatewayIp();
 }
 
 void BruceConfig::setUiColor(uint16_t primary, uint16_t *secondary, uint16_t *background) {

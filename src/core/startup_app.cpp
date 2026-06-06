@@ -15,7 +15,6 @@
 #include "modules/bjs_interpreter/interpreter.h"
 #include "modules/gps/gps_tracker.h"
 #include "modules/gps/wardriving.h"
-#include "modules/pwnagotchi/pwnagotchi.h"
 #include "modules/rf/rf_send.h"
 #include "modules/rfid/PN532KillerTools.h"
 #include "modules/rfid/pn532ble.h"

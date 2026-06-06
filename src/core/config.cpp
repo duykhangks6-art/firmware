@@ -632,72 +632,7 @@ void BruceConfig::removeEvilWifiName(String value) {
     saveFile();
 }
 
-void BruceConfig::setEvilEndpointCreds(String value) {
-    evilPortalEndpoints.getCredsEndpoint = value;
-    validateEvilEndpointCreds();
-    saveFile();
-}
-
-void BruceConfig::validateEvilEndpointCreds() {
-    if (evilPortalEndpoints.getCredsEndpoint == evilPortalEndpoints.setSsidEndpoint) {
-        // on collision reset to defaults
-        evilPortalEndpoints.getCredsEndpoint = "/creds";
-    }
-    if (evilPortalEndpoints.getCredsEndpoint[0] != '/') {
-        evilPortalEndpoints.getCredsEndpoint = '/' + evilPortalEndpoints.getCredsEndpoint;
-    }
-}
-
-void BruceConfig::setEvilEndpointSsid(String value) {
-    evilPortalEndpoints.setSsidEndpoint = value;
-    validateEvilEndpointCreds();
-    saveFile();
-}
-
-void BruceConfig::validateEvilEndpointSsid() {
-    if (evilPortalEndpoints.getCredsEndpoint == evilPortalEndpoints.setSsidEndpoint) {
-        // on collision reset to defaults
-        evilPortalEndpoints.setSsidEndpoint = "/ssid";
-    }
-    if (evilPortalEndpoints.setSsidEndpoint[0] != '/') {
-        evilPortalEndpoints.setSsidEndpoint = '/' + evilPortalEndpoints.setSsidEndpoint;
-    }
-}
-
-void BruceConfig::setEvilAllowEndpointDisplay(bool value) {
-    evilPortalEndpoints.showEndpoints = value;
-    saveFile();
-}
-
-void BruceConfig::setEvilAllowGetCreds(bool value) {
-    evilPortalEndpoints.allowGetCreds = value;
-    saveFile();
-}
-
-void BruceConfig::setEvilAllowSetSsid(bool value) {
-    evilPortalEndpoints.allowSetSsid = value;
-    saveFile();
-}
-
-void BruceConfig::setEvilPasswordMode(EvilPortalPasswordMode value) {
-    evilPortalPasswordMode = value;
-    saveFile();
-}
-
-void BruceConfig::validateEvilPasswordMode() {
-    if (evilPortalPasswordMode < 0 || evilPortalPasswordMode > 2) evilPortalPasswordMode = FULL_PASSWORD;
-}
-
-void BruceConfig::setEvilGatewayIp(String value) {
-    evilPortalGatewayIp = value;
-    validateEvilGatewayIp();
-    saveFile();
-}
-
-void BruceConfig::validateEvilGatewayIp() {
-    IPAddress gatewayIp;
-    if (!gatewayIp.fromString(evilPortalGatewayIp)) evilPortalGatewayIp = "172.0.0.1";
-}
+//evill
 
 void BruceConfig::setStartupApp(String value) {
     startupApp = value;

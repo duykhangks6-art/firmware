@@ -45,18 +45,7 @@ JsonDocument BruceConfig::toJson() const {
     setting["wifiMAC"] = wifiMAC; //@IncursioHack
     setting["TerminalLog"] = TerminalLog;
 
-    JsonArray _evilWifiNames = setting["evilWifiNames"].to<JsonArray>();
-    for (auto key : evilWifiNames) _evilWifiNames.add(key);
-
-    JsonObject _evilWifiEndpoints = setting["evilWifiEndpoints"].to<JsonObject>();
-    _evilWifiEndpoints["getCredsEndpoint"] = evilPortalEndpoints.getCredsEndpoint;
-    _evilWifiEndpoints["setSsidEndpoint"] = evilPortalEndpoints.setSsidEndpoint;
-    _evilWifiEndpoints["showEndpoints"] = evilPortalEndpoints.showEndpoints;
-    _evilWifiEndpoints["allowSetSsid"] = evilPortalEndpoints.allowSetSsid;
-    _evilWifiEndpoints["allowGetCreds"] = evilPortalEndpoints.allowGetCreds;
-    _evilWifiEndpoints["gatewayIp"] = evilPortalGatewayIp;
-
-    setting["evilWifiPasswordMode"] = evilPortalPasswordMode;
+    //evill
 
     JsonObject _wifi = setting["wifi"].to<JsonObject>();
     for (const auto &pair : wifi) { _wifi[pair.first] = pair.second; }
@@ -309,44 +298,9 @@ void BruceConfig::fromFile(bool checkFS) {
         log_e("Fail");
     }
 
-    if (!setting["evilWifiNames"].isNull()) {
-        evilWifiNames.clear();
-        JsonArray _evilWifiNames = setting["evilWifiNames"].as<JsonArray>();
-        for (JsonVariant key : _evilWifiNames) evilWifiNames.insert(key.as<String>());
-    } else {
-        count++;
-        log_e("Fail");
-    }
 
-    if (!setting["evilWifiEndpoints"].isNull()) {
-        JsonObject evilPortalEndpointsObj = setting["evilWifiEndpoints"].as<JsonObject>();
-        evilPortalEndpoints.getCredsEndpoint = evilPortalEndpointsObj["getCredsEndpoint"].as<String>();
-        evilPortalEndpoints.setSsidEndpoint = evilPortalEndpointsObj["setSsidEndpoint"].as<String>();
-        evilPortalEndpoints.showEndpoints = evilPortalEndpointsObj["showEndpoints"].as<bool>();
-        evilPortalEndpoints.allowSetSsid = evilPortalEndpointsObj["allowSetSsid"].as<bool>();
-        evilPortalEndpoints.allowGetCreds = evilPortalEndpointsObj["allowGetCreds"].as<bool>();
-        if (!evilPortalEndpointsObj["gatewayIp"].isNull()) {
-            evilPortalGatewayIp = evilPortalEndpointsObj["gatewayIp"].as<String>();
-        } else {
-            evilPortalGatewayIp = "172.0.0.1";
-        }
-    } else {
-        count++;
-        log_e("Fail");
-    }
 
-    if (!setting["evilWifiPasswordMode"].isNull()) {
-        int mode = setting["evilWifiPasswordMode"].as<int>();
-        if (mode >= 0 && mode <= 2) {
-            evilPortalPasswordMode = static_cast<EvilPortalPasswordMode>(mode);
-        } else {
-            evilPortalPasswordMode = FULL_PASSWORD;
-            log_w("Invalid evilWifiPasswordMode, using FULL_PASSWORD");
-        }
-    } else {
-        count++;
-        log_e("Fail");
-    }
+    //evill
 
     if (!setting["startupApp"].isNull()) {
         startupApp = setting["startupApp"].as<String>();

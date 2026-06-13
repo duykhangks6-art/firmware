@@ -173,7 +173,7 @@ void checkReboot() {
         delay(30);
         if (millis() - time_count > 500) {
             tft.fillRect(60, 12, tftWidth - 60, tft.fontHeight(1), bruceConfig.bgColor);
-            drawStatusBar();
+            ();
         }
     }
 }

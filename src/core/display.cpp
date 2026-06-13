@@ -8,7 +8,7 @@
 #include <interface.h> //for charging ischarging to print charging indicator
 #include <memory>
 
-#define MAX_MENU_SIZE (int)(tftHeight / 35) //khangtft1
+#define MAX_MENU_SIZE (int)(tftHeight / 15) //khangtft1
 
 // Send the ST7789 into or out of sleep mode
 void panelSleep(bool on) {
@@ -750,15 +750,15 @@ void drawSubmenu(int index, std::vector<Option> &options, const char *title) {
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
     tft.setTextSize(FP);
     tft.drawPixel(0, 0, 0);
-    tft.fillRect(6, 30, tftWidth - 12, 8 * FP, bruceConfig.bgColor);
-    tft.drawString(title, 12, 30);
+    tft.fillRect(6, 15, tftWidth - 12, 8 * FP, bruceConfig.bgColor);
+    tft.drawString(title, 12, 15);
 
     // middle of the drawing area
-    int middle = 25 /*status*/ + (tftHeight - 30 /*status + bottom margin*/) / 2;
+    int middle = 15 /*status*/ + (tftHeight - 30 /*status + bottom margin*/) / 2;
     // drawCentreString uses TC_DATUM, so we need to adjust the Y position
     // 42 ensures that title isnt touched( 30 + 8 (LH) + 4(Margin))
-    int middle_up = middle - (tftHeight - 42) / 3 - FM * LH / 2 + 4;
-    int middle_down = middle + (tftHeight - 42) / 3 - FM * LH / 2;
+    int middle_up = middle - (tftHeight - 25) / 3 - FM * LH / 2 + 4;
+    int middle_down = middle + (tftHeight - 25) / 3 - FM * LH / 2;
 
     tft.setTextSize(FM);
 #if defined(HAS_TOUCH)

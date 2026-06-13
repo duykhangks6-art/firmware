@@ -8,7 +8,7 @@
 #include <interface.h> //for charging ischarging to print charging indicator
 #include <memory>
 
-#define MAX_MENU_SIZE (int)(tftHeight / 25)
+#define MAX_MENU_SIZE (int)(tftHeight / 35) //khangtft1
 
 // Send the ST7789 into or out of sleep mode
 void panelSleep(bool on) {

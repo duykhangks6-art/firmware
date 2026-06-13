@@ -890,7 +890,7 @@ void usbClickerSetup() { clicker_setup(); }
 void bleClickerSetup() {
     tft.fillScreen(bruceConfig.bgColor);
     tft.setTextColor(bruceConfig.priColor, bruceConfig.bgColor);
-    tft.setTextSize(2);
+    tft.setTextSize(1);
     tft.setCursor(10, tftHeight / 2 - 8);
     tft.print("BLE Mode");
 

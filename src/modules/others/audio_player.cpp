@@ -323,7 +323,7 @@ void musicPlayerUI(FS *fs, const String &filepath) {
         int boxSize = iconSize + 45; // Wider box towards right
         tft.drawRoundRect(ui.MARGIN_X, y + 2, boxSize, iconSize, 4, TFT_DARKGREY);
         tft.setTextColor(TFT_WHITE);
-        tft.setTextSize(2);
+        tft.setTextSize(1);
 
         // Center "AUDIO" text in box
         String AudioFormatLabel = "AUDIO";              // TODO: Use file extension

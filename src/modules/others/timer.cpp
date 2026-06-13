@@ -206,7 +206,7 @@ void Timer::playAlarmPattern() {
     tft.fillScreen(bruceConfig.bgColor);
     drawMainBorderWithTitle("Timer finished!", false);
 
-    tft.setTextSize(2);
+    tft.setTextSize(1);
     tft.setTextColor(TFT_RED, bruceConfig.bgColor);
     tft.drawCentreString("TIME'S UP!", timerX, timerY - LH, 1);
 

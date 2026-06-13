@@ -269,7 +269,7 @@ void sendmsg() {
         tft.setTextColor(bruceConfig.priColor);
 
         tft.setTextColor(TFT_RED);
-        tft.setTextSize(2);
+        tft.setTextSize(1);
         tft.setCursor(10, tftHeight / 2 - 10);
         tft.print("LoRa not init!");
 

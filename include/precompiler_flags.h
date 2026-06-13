@@ -76,7 +76,7 @@
   #define TFT_WIDTH 240
 #endif
 #ifndef TFT_HEIGHT
-  #define TFT_HEIGHT 135
+  #define TFT_HEIGHT 80
 #endif
 
 #ifndef LORA_SCK

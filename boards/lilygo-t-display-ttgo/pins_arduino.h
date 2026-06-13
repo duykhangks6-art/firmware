@@ -57,6 +57,7 @@ static const uint8_t SCL = GROVE_SCL;
 #define ST7735_DRIVER
 #define TFT_WIDTH 80
 #define TFT_HEIGHT 160 //khangtft
+#define ST7735_GREENTAB160x80
 #define CGRAM_OFFSET
 #define TFT_MOSI 19
 #define TFT_SCLK 18

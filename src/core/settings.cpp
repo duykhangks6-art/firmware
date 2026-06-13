@@ -65,7 +65,7 @@ int gsetRotation(bool set) {
     options = {
         {"Default",         [&]() { result = ROTATION; }                        },
         {"Landscape (180)", [&]() { result = ROTATION + mask; }                 },
-#if TFT_WIDTH >= 170 && TFT_HEIGHT >= 240
+#if TFT_WIDTH >= 80 && TFT_HEIGHT >= 160
         {"Portrait (+90)",  [&]() { result = ROTATION > 0 ? ROTATION - 1 : 3; } },
         {"Portrait (-90)",  [&]() { result = ROTATION == 3 ? 0 : ROTATION + 1; }},
 

@@ -29,7 +29,7 @@ public:
     void draw(float scale = 1) {
         if (rotation != bruceConfigPins.rotation) resetCoordinates();
         if (!checkTheme()) {
-            tft.fillRect(0, 27, tftWidth, tftHeight - 27, bruceConfig.bgColor);
+            tft.fillRect(0, 21, tftWidth, tftHeight - 21, bruceConfig.bgColor);
             drawIcon(scale);
             drawArrows(scale);
             drawTitle(scale);

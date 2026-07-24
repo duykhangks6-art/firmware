@@ -139,9 +139,10 @@ void powerOff() {
 ** location: mykeyboard.cpp
 ** Btn logic to turn off the device (name is odd btw)
 **********************************************************************/
+/**
 void checkReboot() {
     int countDown = 0;
-    /* Long press power off */
+    
     if (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
         uint32_t time_count = millis();
         while (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
@@ -173,4 +174,4 @@ void checkReboot() {
             drawStatusBar();
         }
     }
-}
+}*/

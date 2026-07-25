@@ -6,9 +6,7 @@
 #include "core/settings.h"
 #include "core/utils.h"
 #include "core/wifi/wifi_common.h"
-#ifdef HAS_RGB_LED
-#include "core/led_control.h"
-#endif
+
 
 /*********************************************************************
 **  Function: optionsMenu
@@ -25,10 +23,6 @@ void ConfigMenu::optionsMenu() {
 
         std::vector<Option> localOptions = {
             {"Display & UI",  [this]() { displayUIMenu(); }},
-#ifdef HAS_RGB_LED
-            {"LED Config",    [this]() { ledMenu(); }      },
-#endif
-            {"Audio Config",  [this]() { audioMenu(); }    },
             {"System Config", [this]() { systemMenu(); }   },
             {"Power",         [this]() { powerMenu(); }    },
         };
@@ -81,74 +75,10 @@ void ConfigMenu::displayUIMenu() {
 **  Function: ledMenu
 **  LED configuration submenu with auto-rebuild for toggles
 **********************************************************************/
-#ifdef HAS_RGB_LED
-void ConfigMenu::ledMenu() {
-    while (true) {
-        std::vector<Option> localOptions = {
-            {"LED Color",
-             [this]() {
-                 beginLed();
-                 setLedColorConfig();
-             }                                                                            },
-            {"LED Effect",
-             [this]() {
-                 beginLed();
-                 setLedEffectConfig();
-             }                                                                            },
-            {"LED Brightness",
-             [this]() {
-                 beginLed();
-                 setLedBrightnessConfig();
-             }                                                                            },
-            {String("LED Blink: ") + (bruceConfig.ledBlinkEnabled ? "ON" : "OFF"),
-             [this]() {
-                 // Toggle LED blink setting
-                 bruceConfig.ledBlinkEnabled = !bruceConfig.ledBlinkEnabled;
-                 bruceConfig.saveFile();
-             }                                                                            },
-            {"Back",                                                               []() {}},
-        };
-
-        int selected = loopOptions(localOptions, MENU_TYPE_SUBMENU, "LED Config");
-
-        // Exit only if user pressed Back or ESC
-        if (selected == -1 || selected == localOptions.size() - 1) { return; }
-        // Menu rebuilds to update toggle label
-    }
-}
-#endif
 /*********************************************************************
 **  Function: audioMenu
 **  Audio configuration submenu with auto-rebuild for toggles
 **********************************************************************/
-void ConfigMenu::audioMenu() {
-    while (true) {
-        std::vector<Option> localOptions = {
-#if !defined(LITE_VERSION)
-#if defined(BUZZ_PIN) || defined(HAS_NS4168_SPKR)
-
-            {String("Sound: ") + (bruceConfig.soundEnabled ? "ON" : "OFF"),
-                                                             [this]() {
-                 // Toggle sound setting
-                 bruceConfig.soundEnabled = !bruceConfig.soundEnabled;
-                 bruceConfig.saveFile();
-             }                                                                                                                                            },
-#if defined(HAS_NS4168_SPKR)
-            {"Sound Volume",                                                [this]() { setSoundVolume(); }},
-#endif  // BUZZ_PIN || HAS_NS4168_SPKR
-#endif  //  HAS_NS4168_SPKR
-#endif  //  LITE_VERSION
-            {"Back",                                                        []() {}                       },
-        };
-
-        int selected = loopOptions(localOptions, MENU_TYPE_SUBMENU, "Audio Config");
-
-        // Exit only if user pressed Back or ESC
-        if (selected == -1 || selected == localOptions.size() - 1) { return; }
-        // Menu rebuilds to update toggle label
-    }
-}
-
 /*********************************************************************
 **  Function: systemMenu
 **  System configuration submenu with auto-rebuild for toggles

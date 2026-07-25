@@ -1,5 +1,4 @@
 #include "rf_send.h"
-#include "core/led_control.h"
 #include "core/type_convertion.h"
 #include "protocols/rf_config.h"
 #include "protocols/rf_encoder.h"

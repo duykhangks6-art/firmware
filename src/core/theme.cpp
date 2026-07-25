@@ -1,5 +1,4 @@
 #include "theme.h"
-#include "core/led_control.h"
 #include "display.h"
 
 struct ThemeEntry {
@@ -116,23 +115,23 @@ bool BruceTheme::validateImgFile(FS *fs, String filepath) {
     // Check if file exists
     if (fs == nullptr || filepath.isEmpty()) return false;
     if (!fs->exists(filepath)) return false;
-    
+
     // Check file is not empty
     File file = fs->open(filepath, FILE_READ);
     if (!file) return false;
-    
+
     size_t fileSize = file.size();
     file.close();
-    
+
     // Reject obviously invalid files (too small to be valid images)
     if (fileSize < 64) return false;
-    
+
     // Reject unreasonably large files (likely not intended as menu icons)
     // Menu icons should be small - 500KB is plenty for even high-res icons
     const size_t MAX_ICON_SIZE = 500 * 1024;
     if (fileSize > MAX_ICON_SIZE) return false;
-    
-    // For more advanced validation (checking actual image dimensions), 
+
+    // For more advanced validation (checking actual image dimensions),
     // we would need to decode the image. For now, basic checks above.
     return true;
 }

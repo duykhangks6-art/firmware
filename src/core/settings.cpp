@@ -1,5 +1,4 @@
 #include "settings.h"
-#include "core/led_control.h"
 #include "core/wifi/wifi_common.h"
 #include "current_year.h"
 #include "display.h"

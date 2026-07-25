@@ -8,11 +8,11 @@
 #include <interface.h> //for charging ischarging to print charging indicator
 #include <memory>
 
-#define MAX_MENU_SIZE (int)(tftHeight / 25)
+#define MAX_MENU_SIZE (int)(tftHeight / 13)
 
 // Send the ST7789 into or out of sleep mode
 void panelSleep(bool on) {
-#if defined(ST7789_2_DRIVER) || defined(ST7789_DRIVER)
+#if defined(ST7735_2_DRIVER) || defined(ST7735_DRIVER)
     if (on) {
         tft.writecommand(0x10); // SLPIN: panel off
         delay(5);

@@ -26,7 +26,7 @@ void ConnectMenu::drawIcon(float scale) {
 
     int iconW = scale * 50;
     int iconH = scale * 40;
-    int radius = scale * 7;
+    int radius = scale * 2;
 
     if (iconW % 2 != 0) iconW++;
     if (iconH % 2 != 0) iconH++;

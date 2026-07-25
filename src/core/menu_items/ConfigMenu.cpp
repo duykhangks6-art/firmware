@@ -268,7 +268,7 @@ void ConfigMenu::switchToUARTSerial() {
 **********************************************************************/
 void ConfigMenu::drawIcon(float scale) {
     clearIconArea();
-    int radius = scale * 9;
+    int radius = scale * 2;
 
     // Draw 6 gear teeth segments
     for (int i = 0; i < 6; i++) {

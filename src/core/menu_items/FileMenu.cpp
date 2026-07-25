@@ -35,8 +35,8 @@ void FileMenu::optionsMenu() {
 }
 void FileMenu::drawIcon(float scale) {
     clearIconArea();
-    int iconW = scale * 32;
-    int iconH = scale * 48;
+    int iconW = scale * 13;
+    int iconH = scale * 20;
 
     if (iconW % 2 != 0) iconW++;
     if (iconH % 2 != 0) iconH++;

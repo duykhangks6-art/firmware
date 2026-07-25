@@ -21,8 +21,8 @@ void FMMenu::optionsMenu() {
 
 void FMMenu::drawIcon(float scale) {
     clearIconArea();
-    int iconW = scale * 80;
-    int iconH = scale * 60;
+    int iconW = scale * 30;
+    int iconH = scale * 20;
 
     if (iconW % 2 != 0) iconW++;
     if (iconH % 2 != 0) iconH++;

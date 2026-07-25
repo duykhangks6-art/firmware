@@ -42,7 +42,7 @@ void GpsMenu::configMenu() {
 
 void GpsMenu::drawIcon(float scale) {
     clearIconArea();
-    int radius = scale * 18;
+    int radius = scale * 8;
     if (radius % 2 != 0) radius++;
 
     int tangentX = sqrt(radius * radius - (radius / 2 * radius / 2));

@@ -7,12 +7,7 @@
 ** Description:   initial setup for the device
 ***************************************************************************************/
 
-// Power handler for battery detection
-#ifdef XPOWERS_CHIP_BQ25896
-#include <Wire.h>
-#include <XPowersLib.h>
-XPowersPPM PPM;
-#endif
+
 
 void _setup_gpio() {
 
@@ -29,48 +24,15 @@ void _setup_gpio() {
 
     bruceConfigPins.rfModule = CC1101_SPI_MODULE;
     bruceConfigPins.irRx = RXLED;
-    setSysI2CBus(&Wire); // PMU lives on the default Wire object
-    Wire.setPins(SYS_I2C_SDA, SYS_I2C_SCL);
-    // Wire.begin();
-    bool pmu_ret = false;
-    Wire.begin(SYS_I2C_SDA, SYS_I2C_SCL);
-    pmu_ret = PPM.init(Wire, SYS_I2C_SDA, SYS_I2C_SCL, BQ25896_SLAVE_ADDRESS);
-    if (pmu_ret) {
-        PPM.setSysPowerDownVoltage(3300);
-        PPM.setInputCurrentLimit(3250);
-        Serial.printf("getInputCurrentLimit: %d mA\n", PPM.getInputCurrentLimit());
-        PPM.disableCurrentLimitPin();
-        PPM.setChargeTargetVoltage(4208);
-        PPM.setPrechargeCurr(64);
-        PPM.setChargerConstantCurr(832);
-        PPM.getChargerConstantCurr();
-        Serial.printf("getChargerConstantCurr: %d mA\n", PPM.getChargerConstantCurr());
-        PPM.enableMeasure(PowersBQ25896::CONTINUOUS);
-        PPM.disableOTG();
-        PPM.enableCharge();
-    }
 }
 bool isCharging() {
-    // PPM.disableBatterPowerPath();
-    return PPM.isCharging();
-}
+        return false;
+        }
 
 int getBattery() {
-    int voltage = PPM.getBattVoltage();
-    int percent = (voltage - 3300) * 100 / (float)(4150 - 3350);
+        return 100;
+        }
 
-    if (percent < 0) return 1;
-    if (percent > 100) percent = 100;
-
-    if (PPM.isCharging() && percent >= 97) {
-        PPM.disableBatLoad();
-        percent = 95; // estimate still charging
-    }
-
-    if (PPM.isChargeDone()) { percent = 100; }
-
-    return percent;
-}
 
 /*********************************************************************
 ** Function: setBrightness

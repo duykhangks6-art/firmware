@@ -97,7 +97,6 @@ static const uint8_t SCK = 18;
 #define SPI_SS_PIN 43
 
 
-#define XPOWERS_CHIP_BQ25896
 
 // USE BOOST ENABLE PMIC 5V OUTPUT
 #define USE_BOOST

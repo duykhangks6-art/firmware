@@ -110,36 +110,44 @@ void InputHandler(void) {
 }
 
 // ======= NÚT UP =======
-if (up) {
-if (upTime == 0) upTime = millis();
+static bool upHandled = false;
 
-if (millis() - upTime >= 3000) {
-    powerOff();
-} else if (millis() - upTime >= 250) {
-    EscPress = true;
-} else {
-        PrevPress = true;
-        UpPress = true;
-        PrevPagePress = true;
-    }
-} else {
-    upTime = 0;
-    }
+if (up) {
+    if (upTime == 0) upTime = millis();
+
+        if (!upHandled && millis() - upTime >= 250) {
+                EscPress = true;
+                        upHandled = true;
+                            }
+                            } else {
+                                if (upTime != 0 && !upHandled) {
+                                        PrevPress = true;
+                                                UpPress = true;
+                                                        PrevPagePress = true;
+                                                            }
+                                                                upTime = 0;
+                                                                    upHandled = false;
+                                                                    }
 
 // ======= NÚT DOWN =======
+static bool dwHandled = false;
+
 if (dw) {
     if (dwTime == 0) dwTime = millis();
 
-    if (millis() - dwTime >= 250) {
-        SelPress = true;
-} else {
-        NextPress = true;
-        DownPress = true;
-        NextPagePress = true;
-        }
-} else {
-        dwTime = 0;
-}
+        if (!dwHandled && millis() - dwTime >= 250) {
+                SelPress = true;
+                        dwHandled = true;
+                            }
+                            } else {
+                                if (dwTime != 0 && !dwHandled) {
+                                        NextPress = true;
+                                                DownPress = true;
+                                                        NextPagePress = true;
+                                                            }
+                                                                dwTime = 0;
+                                                                    dwHandled = false;
+                                                                    }
  }
 
 /*********************************************************************

@@ -17,10 +17,7 @@ XPowersPPM PPM;
 void _setup_gpio() {
 
     pinMode(UP_BTN, INPUT); // Sets the power btn as an INPUT
-    pinMode(SEL_BTN, INPUT);
     pinMode(DW_BTN, INPUT);
-    pinMode(R_BTN, INPUT);
-    pinMode(L_BTN, INPUT);
 
     pinMode(CC1101_SS_PIN, OUTPUT);
     pinMode(NRF24_SS_PIN, OUTPUT);
@@ -92,7 +89,6 @@ void _setBrightness(uint8_t brightval) {
 ** Function: InputHandler
 ** Handles the variables PrevPress, NextPress, SelPress, AnyKeyPress and EscPress
 **********************************************************************/
-/**
 void InputHandler(void) {
     static unsigned long tm = 0;
     if (millis() - tm < 200 && !LongPress) return;
@@ -123,17 +119,7 @@ void InputHandler(void) {
         NextPress = false;
         PrevPress = false;
     }
-}*/
-void InputHandler(void) {
-        PrevPress = false;
-            NextPress = false;
-                UpPress = false;
-                    DownPress = false;
-                        SelPress = false;
-                            EscPress = false;
-                                AnyKeyPress = false;
-                                }
-
+}
 /*********************************************************************
 ** Function: powerOff
 ** location: mykeyboard.cpp

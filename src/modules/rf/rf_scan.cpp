@@ -252,7 +252,6 @@ bool RFScan::decode_signal(const std::vector<int> &durations) {
         if (is_m5_duplicate_capture(received)) return false;
 
         Serial.println("Decoded signal captured: " + received.protocol);
-        blinkLed();
         ++signals;
         found_freq = frequency;
         received.frequency = long(frequency * 1000000);
@@ -306,7 +305,6 @@ bool RFScan::read_raw(const std::vector<int> &durations) {
         if (is_m5_duplicate_capture(received)) return false;
 
         Serial.println("Decoded signal captured: " + received.protocol);
-        blinkLed();
         ++signals;
         received.indexed_durations = {};
 
@@ -334,7 +332,6 @@ bool RFScan::read_raw(const std::vector<int> &durations) {
         if (is_m5_duplicate_capture(received)) return false;
 
         Serial.println("Raw signal captured");
-        blinkLed();
         ++signals;
         received.indexed_durations = indexed_durations;
         received.Bit = rawBits;
@@ -349,7 +346,6 @@ bool RFScan::read_raw(const std::vector<int> &durations) {
             return false;
         }
         Serial.println("Raw data captured");
-        blinkLed();
         ++signals;
         received.preset = "Ook270Async";
         received.protocol = "RAW";

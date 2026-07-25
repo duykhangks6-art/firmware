@@ -182,7 +182,6 @@ void loopEmulate(RfCodes &data) {
         }
 
         if (check(SelPress)) {
-            blinkLed();
 
             if (data.serial == 0) {
                 for (int i = 0; uint64_t key : keyList) {

@@ -91,56 +91,56 @@ void _setBrightness(uint8_t brightval) {
 ** Handles the variables PrevPress, NextPress, SelPress, AnyKeyPress and EscPress
 **********************************************************************/
 void InputHandler(void) {
-        static unsigned long tm = 0;
-            static unsigned long upTime = 0;
-                static unsigned long dwTime = 0;
+    static unsigned long tm = 0;
+    static unsigned long upTime = 0;
+    static unsigned long dwTime = 0;
 
-                    if (millis() - tm < 40) return;
+        if (millis() - tm < 40) return;
 
-                        bool up = (digitalRead(UP_BTN) == BTN_ACT);
-                            bool dw = (digitalRead(DW_BTN) == BTN_ACT);
+        bool up = (digitalRead(UP_BTN) == BTN_ACT);
+        bool dw = (digitalRead(DW_BTN) == BTN_ACT);
 
-                                if (up || dw) {
-                                        tm = millis();
+    if (up || dw) {
+        tm = millis();
 
-                                                if (!wakeUpScreen())
-                                                            AnyKeyPress = true;
-                                                                    else
-                                                                                return;
-                                                                                    }
+        if (!wakeUpScreen())
+        AnyKeyPress = true;
+    else
+    return;
+}
 
-                                                                                        // ======= NÚT UP =======
-                                                                                            if (up) {
-                                                                                                    if (upTime == 0) upTime = millis();
+// ======= NÚT UP =======
+if (up) {
+if (upTime == 0) upTime = millis();
 
-                                                                                                            if (millis() - upTime >= 3000) {
-                                                                                                                        powerOff();
-                                                                                                                                } else if (millis() - upTime >= 250) {
-                                                                                                                                            EscPress = true;
-                                                                                                                                                    } else {
-                                                                                                                                                                PrevPress = true;
-                                                                                                                                                                            UpPress = true;
-                                                                                                                                                                                        PrevPagePress = true;
-                                                                                                                                                                                                }
-                                                                                                                                                                                                    } else {
-                                                                                                                                                                                                            upTime = 0;
-                                                                                                                                                                                                                }
+if (millis() - upTime >= 3000) {
+    powerOff();
+} else if (millis() - upTime >= 250) {
+    EscPress = true;
+} else {
+        PrevPress = true;
+        UpPress = true;
+        PrevPagePress = true;
+    }
+} else {
+    upTime = 0;
+    }
 
-                                                                                                                                                                                                                    // ======= NÚT DOWN =======
-                                                                                                                                                                                                                        if (dw) {
-                                                                                                                                                                                                                                if (dwTime == 0) dwTime = millis();
+// ======= NÚT DOWN =======
+if (dw) {
+    if (dwTime == 0) dwTime = millis();
 
-                                                                                                                                                                                                                                        if (millis() - dwTime >= 250) {
-                                                                                                                                                                                                                                                    SelPress = true;
-                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                        NextPress = true;
-                                                                                                                                                                                                                                                                                    DownPress = true;
-                                                                                                                                                                                                                                                                                                NextPagePress = true;
-                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                            } else {
-                                                                                                                                                                                                                                                                                                                    dwTime = 0;
-                                                                                                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                                                                                                        }
+    if (millis() - dwTime >= 250) {
+        SelPress = true;
+} else {
+        NextPress = true;
+        DownPress = true;
+        NextPagePress = true;
+        }
+} else {
+        dwTime = 0;
+}
+ }
 
 /*********************************************************************
 ** Function: powerOff

@@ -158,7 +158,7 @@ void powerOff() {
 ** location: mykeyboard.cpp
 ** Btn logic to turn off the device (name is odd btw)
 **********************************************************************/
-/*
+
 void checkReboot() {
     int countDown = 0;
    if (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
@@ -192,8 +192,6 @@ void checkReboot() {
             drawStatusBar();
         }
     }
-}*/
-void checkReboot() {
-        return;
-        }
+}
+
 

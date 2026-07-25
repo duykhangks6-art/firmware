@@ -19,27 +19,7 @@ void _setup_gpio() {
     pinMode(UP_BTN, INPUT_PULLUP);
     pinMode(DW_BTN, INPUT_PULLUP);
 
-    button_config_t bt1 = {
-            .type = BUTTON_TYPE_GPIO,
-                .long_press_time = 250,
-                    .short_press_time = 40,
-                        .gpio_button_config = {
-                                .gpio_num = DW_BTN,
-                                        .active_level = 0,
-                                            },
-                                            };
 
-                                            button_config_t bt2 = {
-                                                .type = BUTTON_TYPE_GPIO,
-                                                    .long_press_time = 250,
-                                                        .short_press_time = 40,
-                                                            .gpio_button_config = {
-                                                                    .gpio_num = UP_BTN,
-                                                                            .active_level = 0,
-                                                                                },
-                                                                                };
-                                                                                p
-    }
     pinMode(CC1101_SS_PIN, OUTPUT);
     pinMode(NRF24_SS_PIN, OUTPUT);
 
@@ -112,51 +92,66 @@ void _setBrightness(uint8_t brightval) {
 **********************************************************************/
 void InputHandler(void) {
         static unsigned long tm = 0;
-            static unsigned long upPressTime = 0;
+            static unsigned long upTime = 0;
+                static unsigned long dwTime = 0;
 
-                if (millis() - tm < 200 && !LongPress) return;
+                    if (millis() - tm < 40) return;
 
-                    bool up = digitalRead(UP_BTN);
-                        bool dw = digitalRead(DW_BTN);
+                        bool up = (digitalRead(UP_BTN) == BTN_ACT);
+                            bool dw = (digitalRead(DW_BTN) == BTN_ACT);
 
-                            // Giữ nút UP 3 giây để tắt nguồn
-                                if (up == BTN_ACT) {
-                                        if (upPressTime == 0) upPressTime = millis();
-                                                if (millis() - upPressTime >= 3000) {
-                                                            powerOff();
-                                                                    }
-                                                                        } else {
-                                                                                upPressTime = 0;
+                                if (up || dw) {
+                                        tm = millis();
+
+                                                if (!wakeUpScreen())
+                                                            AnyKeyPress = true;
+                                                                    else
+                                                                                return;
                                                                                     }
 
-                                                                                        if (up == BTN_ACT || dw == BTN_ACT) {
-                                                                                                tm = millis();
-                                                                                                        if (!wakeUpScreen()) AnyKeyPress = true;
-                                                                                                                else return;
-                                                                                                                    }
+                                                                                        // ======= NÚT UP =======
+                                                                                            if (up) {
+                                                                                                    if (upTime == 0) upTime = millis();
 
-                                                                                                                        if (up == BTN_ACT) {
-                                                                                                                                PrevPress = true;
-                                                                                                                                        UpPress = true;
-                                                                                                                                                PrevPagePress = true;
-                                                                                                                                                    }
+                                                                                                            if (millis() - upTime >= 3000) {
+                                                                                                                        powerOff();
+                                                                                                                                } else if (millis() - upTime >= 250) {
+                                                                                                                                            EscPress = true;
+                                                                                                                                                    } else {
+                                                                                                                                                                PrevPress = true;
+                                                                                                                                                                            UpPress = true;
+                                                                                                                                                                                        PrevPagePress = true;
+                                                                                                                                                                                                }
+                                                                                                                                                                                                    } else {
+                                                                                                                                                                                                            upTime = 0;
+                                                                                                                                                                                                                }
 
-                                                                                                                                                        if (dw == BTN_ACT) {
-                                                                                                                                                                NextPress = true;
-                                                                                                                                                                        DownPress = true;
-                                                                                                                                                                                NextPagePress = true;
-                                                                                                                                                                                    }
-                                                                                                                                                                                    }
-}
+                                                                                                                                                                                                                    // ======= NÚT DOWN =======
+                                                                                                                                                                                                                        if (dw) {
+                                                                                                                                                                                                                                if (dwTime == 0) dwTime = millis();
+
+                                                                                                                                                                                                                                        if (millis() - dwTime >= 250) {
+                                                                                                                                                                                                                                                    SelPress = true;
+                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                        NextPress = true;
+                                                                                                                                                                                                                                                                                    DownPress = true;
+                                                                                                                                                                                                                                                                                                NextPagePress = true;
+                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                            } else {
+                                                                                                                                                                                                                                                                                                                    dwTime = 0;
+                                                                                                                                                                                                                                                                                                                        }
+                                                                                                                                                                                                                                                                                                                        }
+
 /*********************************************************************
 ** Function: powerOff
 ** location: mykeyboard.cpp
 ** Turns off the device (or try to)
 **********************************************************************/
 void powerOff() {
-    esp_sleep_enable_ext0_wakeup((gpio_num_t)UP_BTN, BTN_ACT);
-    esp_deep_sleep_start();
-}
+        esp_sleep_enable_ext0_wakeup((gpio_num_t)UP_BTN, BTN_ACT);
+            esp_deep_sleep_start();
+            }
+
 
 /*********************************************************************
 ** Function: checkReboot

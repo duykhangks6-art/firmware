@@ -139,10 +139,9 @@ void powerOff() {
 ** location: mykeyboard.cpp
 ** Btn logic to turn off the device (name is odd btw)
 **********************************************************************/
-/**
 void checkReboot() {
     int countDown = 0;
-   if (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
+   //if (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
         uint32_t time_count = millis();
         while (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
             // Display poweroff bar only if holding button
@@ -172,5 +171,5 @@ void checkReboot() {
             tft.fillRect(60, 12, tftWidth - 60, tft.fontHeight(1), bruceConfig.bgColor);
             drawStatusBar();
         }
-    }
-}*/
+    //}
+}

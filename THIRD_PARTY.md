@@ -174,7 +174,6 @@ authors under the original license; only the fork host differs.
 - **AsyncTCP** & **ESPAsyncWebServer** (`ESP32Async`, LGPL-3.0) —
   <https://github.com/ESP32Async/AsyncTCP>,
   <https://github.com/ESP32Async/ESPAsyncWebServer>
-- **FastLED** (`3.10.3`, MIT) — <https://github.com/FastLED/FastLED>
 - **RadioLib** (`jgromes`, `7.4.0`, MIT) — <https://github.com/jgromes/RadioLib>
 
 ## Vendored libraries (`lib/`)

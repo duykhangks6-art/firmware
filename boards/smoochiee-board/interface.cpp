@@ -139,11 +139,12 @@ void powerOff() {
 ** location: mykeyboard.cpp
 ** Btn logic to turn off the device (name is odd btw)
 **********************************************************************/
+/*
 void checkReboot() {
     int countDown = 0;
-   //if (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
+   if (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
         uint32_t time_count = millis();
-        while (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
+       while (digitalRead(L_BTN) == BTN_ACT && digitalRead(R_BTN) == BTN_ACT) {
             // Display poweroff bar only if holding button
             if (millis() - time_count > 500) {
                 if (countDown == 0) {
@@ -163,7 +164,7 @@ void checkReboot() {
                 }
                 delay(10);
             }
-        }
+       }
 
         // Clear text after releasing the button
         delay(30);
@@ -171,5 +172,9 @@ void checkReboot() {
             tft.fillRect(60, 12, tftWidth - 60, tft.fontHeight(1), bruceConfig.bgColor);
             drawStatusBar();
         }
-    //}
-}
+    }
+}*/
+void checkReboot() {
+        return;
+        }
+

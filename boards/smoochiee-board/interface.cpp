@@ -92,6 +92,7 @@ void _setBrightness(uint8_t brightval) {
 ** Function: InputHandler
 ** Handles the variables PrevPress, NextPress, SelPress, AnyKeyPress and EscPress
 **********************************************************************/
+/**
 void InputHandler(void) {
     static unsigned long tm = 0;
     if (millis() - tm < 200 && !LongPress) return;
@@ -122,7 +123,16 @@ void InputHandler(void) {
         NextPress = false;
         PrevPress = false;
     }
-}
+}*/
+void InputHandler(void) {
+        PrevPress = false;
+            NextPress = false;
+                UpPress = false;
+                    DownPress = false;
+                        SelPress = false;
+                            EscPress = false;
+                                AnyKeyPress = false;
+                                }
 
 /*********************************************************************
 ** Function: powerOff

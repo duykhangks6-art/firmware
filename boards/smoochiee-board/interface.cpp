@@ -148,11 +148,20 @@ if (dw) {
 ** Turns off the device (or try to)
 **********************************************************************/
 void powerOff() {
-        esp_sleep_enable_ext0_wakeup((gpio_num_t)UP_BTN, BTN_ACT);
-            esp_deep_sleep_start();
-            }
+        // Chờ nhả nút
+    while (digitalRead(UP_BTN) == BTN_ACT) {
+     delay(10);
+                        }
 
+                            delay(100);
 
+                                // Đánh thức bằng GPIO0 khi kéo xuống LOW
+                                    esp_sleep_enable_ext0_wakeup(GPIO_NUM_0, 0);
+
+                                        tft.writecommand(0x10);
+                                            esp_deep_sleep_start();
+                                            }
+}
 /*********************************************************************
 ** Function: checkReboot
 ** location: mykeyboard.cpp
